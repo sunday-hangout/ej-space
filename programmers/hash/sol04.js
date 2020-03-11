@@ -21,20 +21,18 @@ function solution(genres, plays) {
         {'total': time, 'list': [{'no': idx, 'time': time}]}; 
     });
 
-    // total 내림차순 정렬
-    let sortedAlbum = [];
-    // [{total: x, list: [] }, ...]     장르 이름은 필요 없으므로 제외하고 재정렬한다.
+    let filteredAlbum = []; // [{total: x, list: [] }, ...] => 장르 이름은 필요 없으므로 제외하고 재정렬한다.
     Object.keys(album).map(key => {
-        sortedAlbum.push(album[key]);
+        filteredAlbum.push(album[key]);
     });
-    sortedAlbum.sort((a, b) => b.total - a.total);
-    // time 내림차순 정렬
-    sortedAlbum.map(ab => {
+
+    // total 내림차순 && time 내림차순 정렬
+    filteredAlbum.sort((a, b) => b.total - a.total).map(ab => {
         ab.list.sort((a, b) => b.time - a.time);
     });
     
-    sortedAlbum.map(album => {
-        // ** 문제 유의 ** 장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.
+    filteredAlbum.map(album => {
+        // ** 문제 유의 ** 장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다. max = 2
         let len = album.list.length > 1 ? 2 : 1;
         for (let i = 0; i < len; i++) {
             answer.push(album.list[i].no);
