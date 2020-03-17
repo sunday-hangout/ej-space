@@ -32,3 +32,22 @@ function solution(heights) {
 }
 
 solution([6,9,5,7,4]);
+
+
+
+
+
+
+function solution2(heights){
+    var answer = [];
+    heights.map((h, idx) => {
+        while(idx){
+            idx--;
+            if(heights[idx] > h){
+                return idx + 1;
+            }
+        }
+        return 0;
+    })
+    return answer;
+}
