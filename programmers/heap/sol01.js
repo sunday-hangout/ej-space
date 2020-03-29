@@ -8,8 +8,11 @@
 function solution(scoville, k) {
     let answer = 0; // 모든 음식의 스코빌 지수를 K 이상으로 만들기 위해 섞어야 하는 최소 횟수
 
+    if(scoville.length === 1 && scoville[0] >= k) return 0;
+    if(scoville.length === 1 && scoville[0] < k) return -1;
+
     let tempScoville = [...scoville];
-    while(scoville.some(scovi => scovi <= k)){
+    while(scoville.some(scovi => scovi < k)){
         const minScovi = Math.min(...scoville);
         const idx = scoville.indexOf(minScovi);
         
