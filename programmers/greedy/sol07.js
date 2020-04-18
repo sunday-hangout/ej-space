@@ -5,7 +5,7 @@
  * @param {number[]} weight 
  */
 function solution(weight) {
-    let answer = 1; // 추의 최소 무게
+    let answer = 1; // 추의 최소 개수
 
     weight.sort((a, b) => a - b);
     weight.map(w => {

@@ -12,11 +12,13 @@ function solution(routes) {
 
     routes.sort((a, b) => a[1] - b[1]); // 나간 시점 기준으로 정렬
 
+    console.log(routes);
+
     let currCam = -30000;   // "차량의 진입 지점은 -30,000 이상"
     routes.map(route => {
         if(currCam < route[0]){
             answer += 1;
-            currCam = route[0];
+            currCam = route[1];
         }
     })
 
