@@ -25,14 +25,14 @@ function solution(tickets) {
     answer.push(icnEl[1]);
 
     function getNextStep(prevStep) {
-        tickets.some((ticket, idx) => {
-            if (!checked[idx] && ticket[0] === prevStep) {
-                // console.log(prevStep, ticket, idx);
+        for (let i = 0; i < length; i++) {
+            const ticket = tickets[i];
+            if (!checked[i] && ticket[0] === prevStep) {
                 answer.push(ticket[1]);
-                checked[idx] = true;
-                return true;
-            }
-        });
+                checked[i] = true;
+                break;
+            }           
+        }
     }
 
     for (let i = 0; i < length; i++) {
