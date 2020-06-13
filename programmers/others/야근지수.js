@@ -1,6 +1,6 @@
 /**
  * 야근 지수
- * 야근 피로도 = 남은 일 * 남은 일의 작업량^2
+ * 야근 피로도 = 남은 일의 작업량^2
  * N시간 동안 야근 피로도를 최소화한 값을 구하라.
  * 
  * @param {number} n 퇴근까지 남은 N시간
@@ -27,7 +27,7 @@ function solution(n, works) {
         for (let j = length - 1; j >= 0; j--) {
             if(works[length] === works[j]){
                 i += 1;
-                if(i === n){
+                if(i === n){    // 퇴근까지 남은 시간이 0이라면
                     break;
                 }
                 works[j] -= 1;
